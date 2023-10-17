@@ -6,7 +6,10 @@ public abstract class Integrante {
 	protected static final Integer HONOR_CAPO = Integer.valueOf(100);
 	protected String nombre;
 	protected Integer puntosDeHonor;
-
+	
+	public Integrante () {
+		
+	}
 	public Integrante(String nombre, Integer puntosDeHonor) {
 		this.nombre = nombre;
 		this.puntosDeHonor = puntosDeHonor;
