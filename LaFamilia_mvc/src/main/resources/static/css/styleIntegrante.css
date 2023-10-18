@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family:  'Share Tech', sans-serif;
+    background-color: white ;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Share Tech', sans-serif;
+    font-size: 24px;
+    margin-top: 20px;
+    font-size: 50px;
+}
+
+table {
+    width: 80%;
+    margin: 25px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+
+th {
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    font-size: 18px;
+}
+td{
+    padding: 5px 10px;
+    background-color: #f2f2f2;
+    color: black;
+    font-size: 16px;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #e2e2e2;
+}
+
+button.editar {
+    padding: 5px 10px;
+    background-color: #007BFF; 
+    color: #fff;
+    border: none;
+    transition: all 0.5s ease 0s;  
+    cursor: pointer;
+}
+
+button.editar:hover {
+    background-color: #0056b3; 
+    border-radius: 10px;
+}
+
+
+button.eliminar {
+    padding: 5px 10px;
+    background-color: #ff0000; 
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s ease 0s;  
+}
+
+button.eliminar:hover {
+    background-color: #580303; 
+    border-radius: 10px;
+}

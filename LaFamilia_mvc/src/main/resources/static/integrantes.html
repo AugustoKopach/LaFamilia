@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleIntegrante.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+    <title>Integrantes</title>
+
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(61, 56, 56);"></body>
+    <h2>Lista Integrantes</h2>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+        <tr>
+            <td>Augusto</td>
+            <td>Kopach</td>
+            <td>21</td>
+            <td>
+                     <button class="editar" onclick="editarFila(this)">Editar</button>
+                     <button class="eliminar" onclick="eliminarFila(this)">Eliminar</button>
+            </td>
+        </tr>
+        
+    </table>
