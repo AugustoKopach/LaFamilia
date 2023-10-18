@@ -1,0 +1,83 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size:62.5%;
+}
+container{
+    background-color: #ffffff;
+    font-family: 'Share Tech', sans-serif;
+}
+nav{
+   width: 400%;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding: 10px 700px;
+}
+ul li{
+    background-color: #000000;
+    color: white;
+    display: inline-block;
+    list-style: none;  
+    padding: 5px 35px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    transition: all 0.5s ease 0s;  
+    cursor: pointer;
+}
+ul li:hover{
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+header{
+    position: absolute;
+    bottom: 30%;
+    padding: 0 50px;
+}
+header h1{
+    color: #000000;
+    font-size: 6rem;
+    
+}
+header h2{
+    color: #000000;
+    font-size: 3rem;
+    
+}
+header p{
+    color: #ffffff;
+    padding: 10px 7px;
+    margin: top 40px;
+    font-size: 2.1rem;
+    
+}
+.container .tony{
+    position: absolute;
+    height: 500px;
+    width: 300px;
+    right: 5%;
+    margin-top: 5%; 
+    z-index: 999;
+}
+.container .sangresita{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    padding: 10px 70px;
+    z-index: -1;
+    right: 2%;
+}
+a:link {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit; /* Hereda el color del texto del elemento padre */
+}
+
+/* Estilo para los enlaces visitados */
+a:visited {
+    text-decoration: none; /* Quita el subrayado */
+    color: inherit; /* Hereda el color del texto del elemento padre */
+}

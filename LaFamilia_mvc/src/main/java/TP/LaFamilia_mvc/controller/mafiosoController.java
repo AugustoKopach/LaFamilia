@@ -1,5 +1,4 @@
 package TP.LaFamilia_mvc.controller;
-
 import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,10 +12,13 @@ import TP.LaFamilia_mvc.Model.Integrante;
 import TP.LaFamilia_mvc.Model.Respetable;
 import TP.LaFamilia_mvc.store.MafiosoStore;
 
+
 @RestController
-@RequestMapping("/0800LaMafilia")
+@RequestMapping()
 public class mafiosoController {
 
+	
+	
 	@GetMapping("/Integrantes")
 	private ArrayList<Integrante> listaDeMafiosos() {
 		return MafiosoStore.getInstance().getIntegrantes();
@@ -30,6 +32,8 @@ public class mafiosoController {
 	public Respetable agregar(@RequestBody Respetable unaPersona) {
     MafiosoStore.getInstance().agregarIntegrante(unaPersona);
     return unaPersona;
-}
+    
+    
+	}
 	
 }
