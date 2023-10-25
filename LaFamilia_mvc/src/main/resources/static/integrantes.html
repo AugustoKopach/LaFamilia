@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleIntegrante.css">
+    <link rel="stylesheet" href="/LaFamilia/css/styleIntegrante.css"> <!-- Agregamos el contexto "LaFamilia" a la ruta de CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
@@ -16,23 +16,54 @@
         }
     </style>
 </head>
-<body style="background-color: rgb(61, 56, 56);"></body>
+<body style="background-color: rgb(61, 56, 56);">
     <h2>Lista Integrantes</h2>
-    <table>
+    <table id="integrantesTable">
         <tr>
             <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Edad</th>
+            <th>PuntosHonor</th>
+            <th>DNI</th>
             <th>Acciones</th>
         </tr>
-        <tr>
-            <td>Augusto</td>
-            <td>Kopach</td>
-            <td>21</td>
-            <td>
-                     <button class="editar" onclick="editarFila(this)">Editar</button>
-                     <button class="eliminar" onclick="eliminarFila(this)">Eliminar</button>
-            </td>
-        </tr>
-        
     </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function obtenerIntegrantes() {
+            axios.get("/LaFamilia/Integrantes") // Agregamos el contexto "LaFamilia" a la URL de la solicitud
+                .then(function (response) {
+                    const integrantesTable = document.getElementById("integrantesTable");
+                    response.data.forEach(function (integrante) {
+                        const row = integrantesTable.insertRow(-1);
+                        const nombreCell = row.insertCell(0);
+                        const PuntosHonorCell = row.insertCell(1);
+                        const DNICell = row.insertCell(2); // Corregimos la línea aquí
+                        const accionesCell = row.insertCell(3);
+
+                        nombreCell.innerHTML = integrante.nombre;
+                       	PuntosHonorCell.innerHTML = integrante.puntosDeHonor;
+                        DNICell.innerHTML = integrante.id;
+                        accionesCell.innerHTML = '<button class="editar" onclick="editarFila(this)">Editar</button>' +
+                            '<button class="eliminar" onclick="eliminarFila(this)">Eliminar</button>';
+                    });
+                })
+                .catch(function (error) {
+                    console.error("Error al obtener la lista de integrantes:", error);
+                });
+        }
+
+        // Funciones ficticias para editar y eliminar filas
+        function editarFila(button) {
+            // Puedes implementar la lógica de edición aquí si es necesario
+        }
+
+        function eliminarFila(button) {
+            // Puedes implementar la lógica de eliminación aquí si es necesario
+        }
+
+        obtenerIntegrantes(); // Obtener la lista de integrantes al cargar la página
+    </script>
+</body>
+</html>
+
+

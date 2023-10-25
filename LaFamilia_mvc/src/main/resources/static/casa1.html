@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/pruebaCriminal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabricaMAFIOSOO!!</title>
+</head>
+<body style="background-color: rgb(61, 56, 56);">
+    <center>
+        <h1>Crear integrante Criminal</h1>
+    </center>
+    <form id="integranteForm">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="puntosDeHonor">Puntos:</label>
+        <input type="number" id="puntosDeHonor" name="puntosDeHonor" required><br><br>
+
+        <label for="DNI">DNI:</label>
+        <input type="number" id="DNI" name="DNI" required><br><br>
+
+        <h3>Armas:</h3>
+        <div id="armasContainer">
+            <div>
+                <label for="tipoArma">Tipo de Arma:</label>
+                <select id="tipoArma">
+                    <option value="Cuchillo">Cuchillo</option>
+                    <option value="Ametralladora">Ametralladora</option>
+                    <option value="Bomba">Bomba</option>
+                </select>
+            </div>
+            <div>
+                <label for="puntosDeHonor">Puntos de Honor:</label>
+                <input type="number" id="puntosDeHonor" required>
+            </div>
+            <div>
+                <label for="potenciaDestructiva">Potencia Destructiva:</label>
+                <input type="number" id="potenciaDestructiva" required>
+            </div>
+            <button type="button" onclick="agregarArma()">Agregar Arma</button>
+        </div>
+
+        <ul id="armasList"></ul>
+
+        <input class="crear" type="submit" value="Crear Integrante Criminal">
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let armas = [];
+
+        function agregarArma() {
+            const tipoArma = document.getElementById("tipoArma").value;
+            const puntosDeHonor = parseInt(document.getElementById("puntosDeHonor").value);
+            const potenciaDestructiva = parseInt(document.getElementById("potenciaDestructiva").value);
+
+            if (tipoArma && !isNaN(puntosDeHonor) && !isNaN(potenciaDestructiva)) {
+                const arma = {
+                    tipo: tipoArma,
+                    puntosDeHonor,
+                    potenciaDestructiva
+                };
+
+                armas.push(arma);
+                actualizarListaDeArmas();
+                reiniciarFormularioArmas();
+            } else {
+                alert("Por favor, completa todos los campos del arma.");
+            }
+        }
+
+        function reiniciarFormularioArmas() {
+            document.getElementById("tipoArma").value = "Cuchillo";
+            document.getElementById("puntosDeHonor").value = "";
+            document.getElementById("potenciaDestructiva").value = "";
+        }
+
+        function actualizarListaDeArmas() {
+            const armasList = document.getElementById("armasList");
+            armasList.innerHTML = "";
+            armas.forEach((arma, index) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${arma.tipo} - Puntos de Honor: ${arma.puntosDeHonor}, Potencia Destructiva: ${arma.potenciaDestructiva}`;
+                armasList.appendChild(listItem);
+            });
+        }
+
+        document.getElementById("integranteForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const puntos = parseInt(document.getElementById("puntosDeHonor").value);
+            const DNI = parseInt(document.getElementById("DNI").value);
+
+            const integrante = {
+                nombre,
+                puntosDeHonor: puntos, 
+                id : DNI ,
+                armas
+            };
+
+            axios.post("http://localhost:8080/LaFamilia/AgregarIntegranteCriminal", integrante)
+                .then(function (response) {
+                    console.log(response);
+                    console.log("Se logró agregar el integrante criminal");
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        console.log(error.response.status);
+                    } else {
+                        console.log(error.message);
+                    }
+                });
+        });
+    </script>
+</body>
+</html>
+

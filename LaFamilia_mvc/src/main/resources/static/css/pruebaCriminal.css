@@ -1,0 +1,107 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(61, 56, 56);
+    font-family: 'Share Tech', sans-serif;
+    color: #ffffff; /* Cambia el color del texto a blanco */
+}
+
+center {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+form {
+    width: 400px; /* Aumenta el ancho del formulario a 400px */
+    padding: 16px;
+    border-radius: 10px;
+    margin: 40px auto 0 auto;
+    background-color: white;
+    font-family: 'Share Tech', sans-serif;
+}
+
+form label {
+    width: 72px;
+    font-weight: bold;
+    display: inline-block;
+    color: #000000; /* Cambia el color del texto a negro */
+}
+
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    color: #000000; /* Cambia el color del texto a negro */
+}
+
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    color: #000000; /* Cambia el color del texto a negro */
+}
+
+form button {
+    width: 200px; /* Ancho del botón */
+    padding: 10px;
+    margin-top: 16px;
+    border: 1px solid #000000; /* Borde del botón */
+    border-radius: 5px;
+    background-color: #000000;
+    color: #ffffff; /* Cambia el color del texto a blanco */
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+    background-color: #ffffff;
+}
+
+ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+ul li button {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #ffffff; /* Cambia el color del texto a blanco */
+    cursor: pointer;
+}
+
+ul li button:hover {
+    background-color: antiquewhite
+}

@@ -13,8 +13,8 @@ public class Respetable extends Integrante {
 	private Boolean tieneCargoPolitico;
 
 	// constructores
-	public Respetable(String nombre, Integer puntosDeHonor, Boolean cargoPolitico) {
-		super(nombre, puntosDeHonor);
+	public Respetable(String nombre, Integer puntosDeHonorn, Boolean cargoPolitico, Integer id) {
+		super(nombre, puntosDeHonorn, id);
 		this.titulos = new ArrayList<Titulo>();
 		this.tieneCargoPolitico = cargoPolitico;
 	}
