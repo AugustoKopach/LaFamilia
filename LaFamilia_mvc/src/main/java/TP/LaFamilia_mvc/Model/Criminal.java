@@ -14,6 +14,7 @@ public class Criminal extends Integrante {
 		super(nombre, puntosDeHonorn, id);
 		this.armas = new ArrayList<Arma>();
 	}
+	public Criminal(){}
 
 	// metodos
 	@Override

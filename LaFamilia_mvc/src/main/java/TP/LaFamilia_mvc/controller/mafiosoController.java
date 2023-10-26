@@ -1,8 +1,13 @@
 package TP.LaFamilia_mvc.controller;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,8 +37,55 @@ public class mafiosoController {
 	public Respetable agregar(@RequestBody Respetable unaPersona) {
     MafiosoStore.getInstance().agregarIntegrante(unaPersona);
     return unaPersona;
-    
-    
 	}
 	
+	@DeleteMapping("Borrar/{id}")
+    public String eliminarIntegrante(@PathVariable Integer dni) {
+        MafiosoStore store = MafiosoStore.getInstance();
+        List<Integrante> integrantes = store.getIntegrantes();
+        Integrante integranteAEliminar = null;
+
+        // Buscar el Integrante por su ID
+        for (Integrante integrante : integrantes) {
+            if (integrante.getId().equals(dni)) {
+                integranteAEliminar = integrante;
+                break;
+            }
+        }
+
+        if (integranteAEliminar != null) {
+            // Eliminar el Integrante
+            store.eliminarIntegrante(integranteAEliminar);
+            return "Integrante eliminado con éxito";
+        } else {
+            return "Integrante no encontrado";
+        }
+    }
+	
+	/*@PutMapping("Editar/{id}")
+	public ResponseEntity<String> actualizarIntegrante(@PathVariable Integer id, @RequestBody Integrante integranteActualizado) {
+        MafiosoStore store = MafiosoStore.getInstance();
+        List<Integrante> integrantes = store.getIntegrantes();
+        Integrante integranteExistente = null;
+
+        // Buscar el Integrante por su ID
+        for (Integrante integrante : integrantes) {
+            if (integrante.getId().equals(id)) {
+                integranteExistente = integrante;
+                break;
+            }
+        }
+
+        if (integranteExistente != null) {
+            // Actualizar los datos del Integrante con los datos proporcionados en integranteActualizado
+            integranteExistente.setNombre(integranteActualizado.getNombre());
+            integranteExistente.setEdad(integranteActualizado.getEdad());
+
+            // Puedes agregar más campos a actualizar según las propiedades de tu modelo
+
+            return ResponseEntity.ok("Integrante actualizado con éxito");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }*/
 }

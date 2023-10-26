@@ -27,5 +27,10 @@ public class MafiosoStore {
 	public ArrayList<Integrante> getIntegrantes() {
 		return this.integrantes;
 	}
+	
+	//eliminar integrante
+		public void eliminarIntegrante(Integrante unaPersona) {
+		    integrantes.remove(unaPersona);
+		}
 }
 
