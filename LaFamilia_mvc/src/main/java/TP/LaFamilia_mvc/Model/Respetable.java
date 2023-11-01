@@ -18,6 +18,9 @@ public class Respetable extends Integrante {
 		this.titulos = new ArrayList<Titulo>();
 		this.tieneCargoPolitico = cargoPolitico;
 	}
+	public Respetable() {
+	    
+	}
 
 	// metodos
 	@Override

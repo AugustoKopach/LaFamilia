@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/estiloRespetable.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FabricaMAFIOSOO - Integrante Respetable</title>
+</head>
+<body style="background-color: rgb(61, 56, 56);">
+    <center>
+        <h1>Crear Integrante Respetable</h1>
+    </center>
+    <form id="integranteForm">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="nombre y apellido" required ><br><br>
+
+        <label for="puntosDeHonor">Puntos de Honor:</label>
+        <input type="number" id="puntosDeHonor" name="puntosDeHonor" placeholder="Honor" required ><br><br>
+
+        <label for="DNI">DNI:</label>
+        <input type="number" id="DNI" name="DNI"  placeholder="dni" required><br><br>
+
+        <div id="titulosContainer">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" placeholder="Título">
+            <button type="button" onclick="agregarTitulo()">Agregar Título</button>
+        </div>
+        <br>
+        <ul id="titulosList"></ul>
+
+        <br>
+        
+        <label for="cargoPolitico">¿Tiene Cargo Político?</label>
+        <input type="checkbox" id="cargoPolitico" name="cargoPolitico"><br>
+
+        <input class="crear" type="submit" value="Crear Integrante Respetable">
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        let titulos = [];
+
+        function agregarTitulo() {
+            const titulo = document.getElementById("titulo").value;
+
+            if (titulo.trim() !== "") {
+                titulos.push(titulo);
+                actualizarListaDeTitulos();
+                reiniciarFormularioTitulos();
+            } else {
+                alert("Por favor, ingresa un título válido.");
+            }
+        }
+
+        function reiniciarFormularioTitulos() {
+            document.getElementById("titulo").value = "";
+        }
+
+        function actualizarListaDeTitulos() {
+            const titulosList = document.getElementById("titulosList");
+            titulosList.innerHTML = "";
+            titulos.forEach((titulo, index) => {
+                const listItem = document.createElement("li");
+                listItem.textContent = titulo;
+                titulosList.appendChild(listItem);
+            });
+        }
+
+        document.getElementById("integranteForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const puntosDeHonor = parseInt(document.getElementById("puntosDeHonor").value);
+            const DNI = parseInt(document.getElementById("DNI").value);
+            const tieneCargoPolitico = document.getElementById("cargoPolitico").checked;
+
+            // Ahora agregamos los títulos al objeto integrante
+            const integrante = {
+                nombre,
+                puntosDeHonor,
+                id: DNI,
+                titulos,
+                tieneCargoPolitico
+            };
+
+            // Puedes realizar cualquier otra acción que necesites con el objeto 'integrante'.
+            // Por ejemplo, puedes enviarlo al servidor utilizando axios si es necesario.
+            axios.post("http://localhost:8080/LaFamilia/AgregarIntegranteRespetable", integrante)
+                .then(function (response) {
+                    console.log(response);
+                    console.log("Se logró agregar el integrante respetable");
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        console.log(error.response.status);
+                    } else {
+                        console.log(error.message);
+                    }
+                });
+            });
+            // Luego, puedes reiniciar los campos y la lista de títulos.
+            reiniciarFormularioTitulos();
+       
+    </script>
+</body>
+</html>

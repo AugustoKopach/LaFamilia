@@ -1,0 +1,134 @@
+/* Estilos generales para todos los elementos */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el cuerpo (body) de la página */
+body {
+    background-color: rgb(61, 56, 56);
+    font-family: 'Share Tech', sans-serif;
+    color: #ffffff;
+}
+
+/* Estilos para el elemento center (centrado) */
+center {
+    text-align: center;
+}
+
+/* Estilos para los encabezados h1 */
+h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+}
+
+/* Estilos para el formulario (form) */
+form {
+    width: 400px;
+    padding: 16px;
+    border-radius: 10px;
+    margin: 40px auto 0 auto;
+    background-color: white;
+    font-family: 'Share Tech', sans-serif;
+}
+
+/* Estilos para las etiquetas (labels) del formulario */
+form label {
+    width: 72px;
+    font-weight: bold;
+    display: inline-block;
+    color: #000000;
+}
+
+/* Estilos para los campos de entrada de texto y números del formulario */
+form input[type="text"],
+form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    color: #000000;
+}
+
+/* Estilos para los select (menús desplegables) del formulario */
+form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: white;
+    color: #000000;
+}
+
+/* Estilos para el botón "Crear Integrante Respetable" */
+form input.crear {
+    width: 200px;
+    padding: 10px;
+    margin-top: 16px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Estilos para el botón "Crear Integrante Respetable" cuando el mouse está sobre él */
+form input.crear:hover {
+    background-color: white;
+    color: #000000;
+}
+
+/* Estilos para el botón "Agregar Título" */
+form button {
+    width: 100px; /* Ancho del botón reducido a 100px */
+    padding: 5px 10px; /* Relleno interno de 5px en vertical y 10px en horizontal (reducido) */
+    margin-top: 16px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Estilos para el botón "Agregar Título" cuando el mouse está sobre él */
+form button:hover {
+    background-color: white;
+    color: #000000;
+}
+
+/* Estilos para listas desordenadas (ul) */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+    background-color: #ffffff;
+}
+
+/* Estilos para los elementos de la lista (li) */
+ul li {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+/* Estilos para los botones dentro de los elementos de la lista (li) */
+ul li button {
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #000000;
+    color: #000000;
+    cursor: pointer;
+}
+
+/* Estilos para el botón dentro de los elementos de la lista (li) cuando el mouse está sobre él */
+ul li button:hover {
+    background-color: antiquewhite;
+}
