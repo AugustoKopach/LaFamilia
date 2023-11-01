@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/estiloRespetable.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FabricaMAFIOSOO - Integrante Respetable</title>
+    <title>FabricaTuRespetable!! - Integrante Respetable</title>
 </head>
 <body style="background-color: rgb(61, 56, 56);">
     <center>
@@ -88,6 +88,7 @@
                 .then(function (response) {
                     console.log(response);
                     console.log("Se logró agregar el integrante respetable");
+                    window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
                 })
                 .catch(function (error) {
                     if (error.response) {

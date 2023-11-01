@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="css/pruebaCriminal.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FabricaMAFIOSOO!!</title>
+    <title>Fabrica tu MAFIOSOO!!</title>
 </head>
 <body style="background-color: rgb(61, 56, 56);">
     <center>
@@ -14,8 +14,8 @@
         <label for="nombre">Nombre Completo:</label>
         <input type="text" id="nombre" name="nombre" required><br><br>
 
-        <label for="puntosDeHonor">Puntos:</label>
-        <input type="number" id="puntosDeHonor" name="puntosDeHonor" required><br><br>
+        <label for="puntosDeHonorIntegrante">Puntos:</label>
+        <input type="number" id="puntosDeHonorIntegrante" name="puntosDeHonor" required><br><br>
 
         <label for="DNI">DNI:</label>
         <input type="number" id="DNI" name="DNI" required><br><br>
@@ -31,19 +31,19 @@
                 </select>
             </div>
             <div>
-                <label for="puntosDeHonor">Puntos de Honor:</label>
-                <input type="number" id="puntosDeHonor" required>
+                <label for="puntosDeHonorArma">Puntos de Honor:</label>
+                <input type="number" id="puntosDeHonorArma">
             </div>
             <div>
                 <label for="potenciaDestructiva">Potencia Destructiva:</label>
-                <input type="number" id="potenciaDestructiva" required>
+                <input type="number" id="potenciaDestructiva">
             </div>
             <button type="button" onclick="agregarArma()">Agregar Arma</button>
         </div>
 
         <ul id="armasList"></ul>
 
-        <input class="crear" type="submit" value="Crear Integrante Criminal">
+        <input class="crear" type="submit" value="Crear Integrante Criminal" id="crearIntegranteButton">
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -52,27 +52,23 @@
 
         function agregarArma() {
             const tipoArma = document.getElementById("tipoArma").value;
-            const puntosDeHonor = parseInt(document.getElementById("puntosDeHonor").value);
-            const potenciaDestructiva = parseInt(document.getElementById("potenciaDestructiva").value);
+            const puntosDeHonor = document.getElementById("puntosDeHonorArma").value;
+            const potenciaDestructiva = document.getElementById("potenciaDestructiva").value;
 
-            if (tipoArma && !isNaN(puntosDeHonor) && !isNaN(potenciaDestructiva)) {
-                const arma = {
-                    tipo: tipoArma,
-                    puntosDeHonor,
-                    potenciaDestructiva
-                };
+            const arma = {
+                tipo: tipoArma,
+                puntosDeHonor,
+                potenciaDestructiva
+            };
 
-                armas.push(arma);
-                actualizarListaDeArmas();
-                reiniciarFormularioArmas();
-            } else {
-                alert("Por favor, completa todos los campos del arma.");
-            }
+            armas.push(arma);
+            actualizarListaDeArmas();
+            reiniciarFormularioArmas();
         }
 
         function reiniciarFormularioArmas() {
             document.getElementById("tipoArma").value = "Cuchillo";
-            document.getElementById("puntosDeHonor").value = "";
+            document.getElementById("puntosDeHonorArma").value = "";
             document.getElementById("potenciaDestructiva").value = "";
         }
 
@@ -89,13 +85,18 @@
         document.getElementById("integranteForm").addEventListener("submit", (event) => {
             event.preventDefault();
             const nombre = document.getElementById("nombre").value;
-            const puntos = parseInt(document.getElementById("puntosDeHonor").value);
-            const DNI = parseInt(document.getElementById("DNI").value);
+            const puntos = document.getElementById("puntosDeHonorIntegrante").value;
+            const DNI = document.getElementById("DNI").value;
+
+            if (armas.length === 0) {
+                alert("Debes agregar al menos un arma antes de crear un integrante.");
+                return;
+            }
 
             const integrante = {
                 nombre,
-                puntosDeHonor: puntos, 
-                id : DNI ,
+                puntosDeHonor: puntos,
+                id: DNI,
                 armas
             };
 
@@ -103,16 +104,22 @@
                 .then(function (response) {
                     console.log(response);
                     console.log("Se logró agregar el integrante criminal");
+                    window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
                 })
                 .catch(function (error) {
                     if (error.response) {
                         console.log(error.response.status);
+
                     } else {
                         console.log(error.message);
                     }
-                });
-        });
+                	});
+                
+              });
+        
     </script>
 </body>
 </html>
+
+
 

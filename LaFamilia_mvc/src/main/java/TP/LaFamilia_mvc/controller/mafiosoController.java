@@ -2,12 +2,10 @@ package TP.LaFamilia_mvc.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,28 +37,26 @@ public class mafiosoController {
     return unaPersona;
 	}
 	
-	@DeleteMapping("Borrar/{id}")
-    public String eliminarIntegrante(@PathVariable Integer dni) {
-        MafiosoStore store = MafiosoStore.getInstance();
-        List<Integrante> integrantes = store.getIntegrantes();
-        Integrante integranteAEliminar = null;
+	@DeleteMapping("Borrar/Integrante/{dni}")
+	public String eliminarIntegrante(@PathVariable Integer dni) {
+	    MafiosoStore store = MafiosoStore.getInstance();
+	    List<Integrante> integrantes = store.getIntegrantes();
+	    Integrante integranteAEliminar = null;
+	    for (Integrante integrante : integrantes) {
+	        if (integrante.getId().equals(dni)) {
+	            integranteAEliminar = integrante;
+	            break;
+	        }
+	    }
 
-        // Buscar el Integrante por su ID
-        for (Integrante integrante : integrantes) {
-            if (integrante.getId().equals(dni)) {
-                integranteAEliminar = integrante;
-                break;
-            }
-        }
+	    if (integranteAEliminar != null) {
+	        store.eliminarIntegrante(integranteAEliminar);
+	        return "Integrante eliminado con éxito";
+	    } else {
+	        return "Integrante no encontrado";
+	    }
+	}
 
-        if (integranteAEliminar != null) {
-            // Eliminar el Integrante
-            store.eliminarIntegrante(integranteAEliminar);
-            return "Integrante eliminado con éxito";
-        } else {
-            return "Integrante no encontrado";
-        }
-    }
 	
 	/*@PutMapping("Editar/{id}")
 	public ResponseEntity<String> actualizarIntegrante(@PathVariable Integer id, @RequestBody Integrante integranteActualizado) {

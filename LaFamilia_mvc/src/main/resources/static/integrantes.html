@@ -37,14 +37,14 @@
                         const row = integrantesTable.insertRow(-1);
                         const nombreCell = row.insertCell(0);
                         const PuntosHonorCell = row.insertCell(1);
-                        const DNICell = row.insertCell(2); // Corregimos la línea aquí
+                        const DNICell = row.insertCell(2);
                         const accionesCell = row.insertCell(3);
 
                         nombreCell.innerHTML = integrante.nombre;
-                       	PuntosHonorCell.innerHTML = integrante.puntosDeHonor;
+                        PuntosHonorCell.innerHTML = integrante.puntosDeHonor;
                         DNICell.innerHTML = integrante.id;
                         accionesCell.innerHTML = '<button class="editar" onclick="editarFila(this)">Editar</button>' +
-                            '<button class="eliminar" onclick="eliminarFila(this)">Eliminar</button>';
+                            '<button class="eliminar" onclick="eliminarFila(' + integrante.id + ')">Eliminar</button>';
                     });
                 })
                 .catch(function (error) {
@@ -52,18 +52,19 @@
                 });
         }
 
-        // Funciones ficticias para editar y eliminar filas
-        function editarFila(button) {
-            // Puedes implementar la lógica de edición aquí si es necesario
+        function eliminarFila(dni) {
+            axios.delete("/LaFamilia/Borrar/Integrante/" + dni)
+                .then(function (response) {
+                    console.log(response);
+                    console.log("Se logró eliminar el integrante respetable");
+                    window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
+                })
+                .catch(function (error) {
+                    console.error("Error al eliminar el integrante:", error);
+                });
         }
 
-        function eliminarFila(button) {
-            // Puedes implementar la lógica de eliminación aquí si es necesario
-        }
-
-        obtenerIntegrantes(); // Obtener la lista de integrantes al cargar la página
+        obtenerIntegrantes();
     </script>
 </body>
 </html>
-
-
