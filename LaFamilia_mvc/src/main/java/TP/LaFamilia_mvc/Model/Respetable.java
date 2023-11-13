@@ -7,7 +7,6 @@ public class Respetable extends Integrante {
 
 	// constantes
 	private static final Integer HONOR_POR_TITULO = Integer.valueOf(10);
-	
 	// atributos
 	private Collection<Titulo> titulos;
 	private Boolean tieneCargoPolitico;
@@ -40,4 +39,11 @@ public class Respetable extends Integrante {
 	public void add(Titulo titulo) {
 		this.titulos.add(titulo);
 	}
+	
+	//PRUEBA
+	public static Respetable createRespetable(String nombre, Integer puntosDeHonorn, Boolean cargoPolitico, Integer id) {
+        return new Respetable(nombre, puntosDeHonorn, cargoPolitico, id);
+    }
+	
+	
 }

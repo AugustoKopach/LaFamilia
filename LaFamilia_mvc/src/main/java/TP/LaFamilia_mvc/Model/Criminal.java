@@ -8,7 +8,7 @@ public class Criminal extends Integrante {
 
 	// atributos
 	private Collection<Arma> armas;
-
+	
 	// constructores
 	public Criminal(String nombre, Integer puntosDeHonorn, Integer id) {
 		super(nombre, puntosDeHonorn, id);
@@ -45,4 +45,10 @@ public class Criminal extends Integrante {
 	public void add(Arma arma) {
 		this.armas.add(arma);
 	}
+	
+	
+	//PRUEBA
+	public static Criminal createCriminal(String nombre, Integer puntosDeHonorn, Integer id) {
+        return new Criminal(nombre, puntosDeHonorn, id);
+    }
 }

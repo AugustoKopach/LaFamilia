@@ -32,5 +32,17 @@ public class MafiosoStore {
 		public void eliminarIntegrante(Integrante unaPersona) {
 		    integrantes.remove(unaPersona);
 		}
+		
+	//editar Integrante 
+		public void editarIntegrante(Integrante unaPersona) {
+		    for (Integrante integrante : this.integrantes) {
+		        if (integrante.getId().equals(unaPersona.getId())) {
+		            integrante.setNombre(unaPersona.getNombre());
+		            integrante.setPuntosDeHonor(unaPersona.getPuntosDeHonor());
+		            break; // Importante: Romper el bucle una vez que se encuentre y actualice el integrante.
+		        }
+		    }
+		}
+
 }
 

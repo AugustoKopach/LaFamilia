@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/LaFamilia/css/styleIntegrante.css"> <!-- Agregamos el contexto "LaFamilia" a la ruta de CSS -->
+    <link rel="stylesheet" href="/LaFamilia/css/styleIntegrante.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
@@ -29,38 +29,49 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        function obtenerIntegrantes() {
-            axios.get("/LaFamilia/Integrantes") // Agregamos el contexto "LaFamilia" a la URL de la solicitud
-                .then(function (response) {
-                    const integrantesTable = document.getElementById("integrantesTable");
-                    response.data.forEach(function (integrante) {
-                        const row = integrantesTable.insertRow(-1);
-                        const nombreCell = row.insertCell(0);
-                        const PuntosHonorCell = row.insertCell(1);
-                        const DNICell = row.insertCell(2);
-                        const accionesCell = row.insertCell(3);
+        function renderizarIntegrantes(integrantes) {
+            const integrantesTable = document.getElementById("integrantesTable");
+            integrantes.forEach(integrante => {
+                const row = integrantesTable.insertRow(-1);
+                const [nombreCell, puntosHonorCell, dniCell, accionesCell] = Array.from({ length: 4 }, (_, index) => row.insertCell(index));
 
-                        nombreCell.innerHTML = integrante.nombre;
-                        PuntosHonorCell.innerHTML = integrante.puntosDeHonor;
-                        DNICell.innerHTML = integrante.id;
-                        accionesCell.innerHTML = '<button class="editar" onclick="editarFila(this)">Editar</button>' +
-                            '<button class="eliminar" onclick="eliminarFila(' + integrante.id + ')">Eliminar</button>';
-                    });
+                nombreCell.innerHTML = integrante.nombre;
+                puntosHonorCell.innerHTML = integrante.puntosDeHonor;
+                dniCell.innerHTML = integrante.id;
+                accionesCell.innerHTML = `
+                    <button class="editar" onclick="editarFila(${integrante.id})">Editar</button>
+                    <button class="eliminar" onclick="eliminarFila(${integrante.id})">Eliminar</button>
+                `;
+            });
+        }
+
+        function eliminarFila(id) {
+            axios.delete(`/LaFamilia/Borrar/Integrante/${id}`)
+                .then(response => {
+                    console.log(response);
+                    console.log("Se logró eliminar el integrante respetable");
+                    window.location.reload(); // Recargar la página después de la eliminación
                 })
-                .catch(function (error) {
-                    console.error("Error al obtener la lista de integrantes:", error);
+                .catch(error => {
+                    console.error("Error al eliminar el integrante:", error);
+                    alert("Error al eliminar el integrante. Por favor, inténtalo de nuevo.");
                 });
         }
 
-        function eliminarFila(dni) {
-            axios.delete("/LaFamilia/Borrar/Integrante/" + dni)
-                .then(function (response) {
-                    console.log(response);
-                    console.log("Se logró eliminar el integrante respetable");
-                    window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
+        function editarFila(id) {
+            // Aquí deberías redirigir a una página de edición o mostrar un formulario de edición.
+            // En este ejemplo, simplemente redirijo a la página de edición.
+            window.location.href = `/LaFamilia/editarIntegrante.html?id=${id}`;
+        }
+
+        function obtenerIntegrantes() {
+            axios.get("/LaFamilia/Integrantes")
+                .then(response => {
+                    renderizarIntegrantes(response.data);
                 })
-                .catch(function (error) {
-                    console.error("Error al eliminar el integrante:", error);
+                .catch(error => {
+                    console.error("Error al obtener la lista de integrantes:", error);
+                    alert("Error al obtener la lista de integrantes. Por favor, inténtalo de nuevo.");
                 });
         }
 
