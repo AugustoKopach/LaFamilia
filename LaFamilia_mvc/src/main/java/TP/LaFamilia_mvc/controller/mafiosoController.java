@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import TP.LaFamilia_mvc.Model.Criminal;
 import TP.LaFamilia_mvc.Model.Integrante;
 import TP.LaFamilia_mvc.Model.Respetable;
+import TP.LaFamilia_mvc.Model.Tipo;
 import TP.LaFamilia_mvc.store.MafiosoStore;
 
 
@@ -45,20 +46,26 @@ public class mafiosoController {
 	public String eliminarIntegrante(@PathVariable Integer dni) {
 	    MafiosoStore store = MafiosoStore.getInstance();
 	    List<Integrante> integrantes = store.getIntegrantes();
-	    Integrante integranteAEliminar = null;
-	    for (Integrante integrante : integrantes) {
+	    Integrante integranteAEliminar = integrantes
+        	    .stream()
+        	    .filter(i -> i.getId().equals(dni))
+        	    .findFirst()
+        	    .orElse(null);
+	    
+	    
+	    /*for (Integrante integrante : integrantes) {
 	        if (integrante.getId().equals(dni)) {
 	            integranteAEliminar = integrante;
 	            break;
 	        }
-	    }
+	    }*/
 
 	    if (integranteAEliminar != null) {
 	        store.eliminarIntegrante(integranteAEliminar);
 	        return "Integrante eliminado con éxito";
 	    } else {
 	        return "Integrante no encontrado";
-	    } 
+	    }
 	}
 
 	
@@ -68,15 +75,22 @@ public class mafiosoController {
         // Resto del código...
 
         // Aquí manejarías la actualización del Respetable
-        Respetable respetableAEditar = null;
-
         // Buscar el Respetable por su ID
+        Respetable respetableAEditar = (Respetable) store.getIntegrantes()
+        	    .stream()
+        	    .filter(i -> i instanceof Respetable && i.getId().equals(id))
+        	    .findFirst()
+        	    .orElse(null);
+        
+        
+       /* Respetable respetableAEditar = null;
         for (Integrante integrante : store.getIntegrantes()) {
             if (integrante instanceof Respetable && integrante.getId().equals(id)) {
                 respetableAEditar = (Respetable) integrante;
                 break;
             }
-        }
+        }*/
+        
 
         if (respetableAEditar != null) {
             // Actualizar los campos del Respetable existente
@@ -95,16 +109,22 @@ public class mafiosoController {
         // Resto del código...
 
         // Aquí manejarías la actualización del Respetable
-        Criminal criminalAEditar = null;
-
+        Criminal criminalAEditar = (Criminal) store.getIntegrantes()
+        	    .stream()
+        	    .filter(i -> i instanceof Criminal && i.getId().equals(id))
+        	    .findFirst()
+        	    .orElse(null);
+        
+        
+       /* Criminal criminalAEditar = null;
         // Buscar el Respetable por su ID
         for (Integrante integrante : store.getIntegrantes()) {
             if (integrante instanceof Respetable && integrante.getId().equals(id)) {
                 criminalAEditar = (Criminal) integrante;
                 break;
             }
-        }
-
+        }*/
+        
         if (criminalAEditar != null) {
             // Actualizar los campos del Respetable existente
         	criminalAEditar.setNombre(criminalActualizado.getNombre());
@@ -133,5 +153,21 @@ public class mafiosoController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
-
+	@GetMapping("/integranteCriminal/{id}")
+	public ResponseEntity<Integrante> obtenerIntegranteCRiminalPorId(@PathVariable Integer id) {
+		MafiosoStore store = MafiosoStore.getInstance();
+		Integrante respetableAEditar = null;
+		// Lógica para obtener los detalles del integrante respetable por ID
+		 for (Integrante integrante : store.getIntegrantes()) {
+	            if (integrante instanceof Criminal && integrante.getId().equals(id)) {
+	                respetableAEditar = (Criminal) integrante;
+	                break;
+	            }
+	        }
+	    if (respetableAEditar != null) {
+	        return ResponseEntity.ok(respetableAEditar);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
+	}
 }

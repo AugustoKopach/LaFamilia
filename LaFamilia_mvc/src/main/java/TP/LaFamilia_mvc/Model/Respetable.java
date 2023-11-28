@@ -12,8 +12,8 @@ public class Respetable extends Integrante {
 	private Boolean tieneCargoPolitico;
 
 	// constructores
-	public Respetable(String nombre, Integer puntosDeHonorn, Boolean cargoPolitico, Integer id) {
-		super(nombre, puntosDeHonorn, id);
+	public Respetable(String nombre, Integer puntosDeHonorn, Boolean cargoPolitico, Integer id, Tipo tipo) {
+		super(nombre, puntosDeHonorn, id, Tipo.RESPETABLE);
 		this.titulos = new ArrayList<Titulo>();
 		this.tieneCargoPolitico = cargoPolitico;
 	}
@@ -41,9 +41,10 @@ public class Respetable extends Integrante {
 	}
 	
 	//PRUEBA
-	public static Respetable createRespetable(String nombre, Integer puntosDeHonorn, Boolean cargoPolitico, Integer id) {
-        return new Respetable(nombre, puntosDeHonorn, cargoPolitico, id);
+	public static Respetable createRespetable(String nombre, Integer puntosDeHonorn, Boolean cargoPolitico, Integer id, Tipo tipo) {
+        return new Respetable(nombre, puntosDeHonorn, cargoPolitico, id, Tipo.RESPETABLE);
     }
+	
 	
 	
 }

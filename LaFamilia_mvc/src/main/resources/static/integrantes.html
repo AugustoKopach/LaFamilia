@@ -39,7 +39,7 @@
                 puntosHonorCell.innerHTML = integrante.puntosDeHonor;
                 dniCell.innerHTML = integrante.id;
                 accionesCell.innerHTML = `
-                    <button class="editar" onclick="editarFila(${integrante.id})">Editar</button>
+                    <button class="editar" onclick="editarFila('${integrante.id}', '${integrante.tipo}')">Editar</button>
                     <button class="eliminar" onclick="eliminarFila(${integrante.id})">Eliminar</button>
                 `;
             });
@@ -58,11 +58,22 @@
                 });
         }
 
-        function editarFila(id) {
-            // Aquí deberías redirigir a una página de edición o mostrar un formulario de edición.
-            // En este ejemplo, simplemente redirijo a la página de edición.
-            window.location.href = `/LaFamilia/editarIntegrante.html?id=${id}`;
+        function editarFila(id, tipo) {
+            if (tipo === 'RESPETABLE') {
+                // Redirigir a la página de edición de respetables
+                window.location.href = `/LaFamilia/editarIntegrante.html?id=${id}`;
+            } else if (tipo === 'CRIMINAL') {
+                // Redirigir a la página de edición de criminales
+                window.location.href = `/LaFamilia/editarCriminal.html?id=${id}`;
+            } else {
+                console.error("Tipo de integrante no reconocido:", tipo);
+            }
         }
+
+
+
+
+
 
         function obtenerIntegrantes() {
             axios.get("/LaFamilia/Integrantes")

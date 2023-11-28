@@ -7,7 +7,7 @@ public abstract class Integrante {
 	protected String nombre;
 	protected Integer puntosDeHonor;
 	protected Integer id;
-	
+	protected Tipo tipo;
 	
 	/**
 	 * 
@@ -53,10 +53,12 @@ public abstract class Integrante {
 	}
 
 	
-	public Integrante(String nombre, Integer puntosDeHonorn, Integer idDelIntegrante) {
+	public Integrante(String nombre, Integer puntosDeHonorn, Integer idDelIntegrante, Tipo tipo) {
 		this.nombre        = nombre;
 		this.puntosDeHonor = puntosDeHonorn;
 		this.id            = idDelIntegrante;
+		this.tipo		   = tipo;
+		
 	}
 
 	public abstract Integer honor();
@@ -72,6 +74,12 @@ public abstract class Integrante {
 
 	public String getNombre() {
 		return nombre;
+	}
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
 	}
 	
 	

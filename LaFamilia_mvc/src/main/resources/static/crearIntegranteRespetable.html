@@ -72,6 +72,7 @@
             const puntosDeHonor = parseInt(document.getElementById("puntosDeHonor").value);
             const DNI = parseInt(document.getElementById("DNI").value);
             const tieneCargoPolitico = document.getElementById("cargoPolitico").checked;
+            
 
             // Ahora agregamos los títulos al objeto integrante
             const integrante = {
@@ -79,7 +80,8 @@
                 puntosDeHonor,
                 id: DNI,
                 titulos,
-                tieneCargoPolitico
+                tieneCargoPolitico,
+                tipo : "RESPETABLE"
             };
 
             // Puedes realizar cualquier otra acción que necesites con el objeto 'integrante'.

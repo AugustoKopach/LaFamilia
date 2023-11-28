@@ -87,6 +87,7 @@
             const nombre = document.getElementById("nombre").value;
             const puntos = document.getElementById("puntosDeHonorIntegrante").value;
             const DNI = document.getElementById("DNI").value;
+            
 
             if (armas.length === 0) {
                 alert("Debes agregar al menos un arma antes de crear un integrante.");
@@ -97,7 +98,8 @@
                 nombre,
                 puntosDeHonor: puntos,
                 id: DNI,
-                armas
+                armas,
+                tipo : "CRIMINAL"
             };
 
             axios.post("http://localhost:8080/LaFamilia/AgregarIntegranteCriminal", integrante)

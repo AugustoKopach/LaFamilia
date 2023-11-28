@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="css/estiloEditCriminal.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Integrante Criminal</title>
+</head>
+<body style="background-color: rgb(61, 56, 56);">
+    <center>
+        <h1>Editar Integrante Criminal</h1>
+    </center>
+    <form id="integranteForm">
+        <label for="nombre">Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="nombre y apellido" required><br><br>
+
+        <label for="puntosDeHonor">Puntos de Honor:</label>
+        <input type="number" id="puntosDeHonor" name="puntosDeHonor" placeholder="Honor" required><br><br>
+
+        <input class="editar" type="submit" value="Editar Integrante Criminal">
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Obtener ID_DEL_INTEGRANTE de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const integranteId = urlParams.get('id'); // O el método que utilices para obtener el ID del integrante
+
+        axios.get(`http://localhost:8080/LaFamilia/integranteCriminal/${integranteId}`)
+            .then(function (response) {
+                const integrante = response.data; // Datos del integrante obtenidos de la API
+                // Llenar los campos del formulario con los datos del integrante
+                document.getElementById("nombre").value = integrante.nombre;
+                document.getElementById("puntosDeHonor").value = integrante.puntosDeHonor;
+            })
+            .catch(function (error) {
+                if (error.response) {
+                    console.log(error.response.status);
+                } else {
+                    console.log(error.message);
+                }
+            });
+
+        document.getElementById("integranteForm").addEventListener("submit", (event) => {
+            event.preventDefault();
+            const nombre = document.getElementById("nombre").value;
+            const puntosDeHonor = parseInt(document.getElementById("puntosDeHonor").value);
+
+            const integrante = {
+                nombre,
+                puntosDeHonor
+            };
+
+            axios.put(`http://localhost:8080/LaFamilia/EditarCriminal/${integranteId}`, integrante)
+                .then(function (response) {
+                    console.log(response);
+                    console.log("Integrante respetable editado con éxito");
+                    window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
+                })
+                .catch(function (error) {
+                    if (error.response) {
+                        console.log(error.response.status);
+                    } else {
+                        console.log(error.message);
+                    }
+                });
+        });
+    </script>
+</body>
+</html>
