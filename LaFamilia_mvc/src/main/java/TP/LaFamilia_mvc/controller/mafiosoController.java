@@ -51,14 +51,6 @@ public class mafiosoController {
         	    .filter(i -> i.getId().equals(dni))
         	    .findFirst()
         	    .orElse(null);
-	    
-	    
-	    /*for (Integrante integrante : integrantes) {
-	        if (integrante.getId().equals(dni)) {
-	            integranteAEliminar = integrante;
-	            break;
-	        }
-	    }*/
 
 	    if (integranteAEliminar != null) {
 	        store.eliminarIntegrante(integranteAEliminar);
@@ -72,26 +64,14 @@ public class mafiosoController {
 	@PutMapping("/EditarRespetable/{id}")
     public ResponseEntity<String> actualizarRespetable(@PathVariable Integer id, @RequestBody Respetable respetableActualizado) {
         MafiosoStore store = MafiosoStore.getInstance();
-        // Resto del código...
-
-        // Aquí manejarías la actualización del Respetable
+        
         // Buscar el Respetable por su ID
         Respetable respetableAEditar = (Respetable) store.getIntegrantes()
         	    .stream()
-        	    .filter(i -> i instanceof Respetable && i.getId().equals(id))
+        	    .filter(i -> i.getTipo().equals(Tipo.RESPETABLE) && i.getId().equals(id))
         	    .findFirst()
         	    .orElse(null);
         
-        
-       /* Respetable respetableAEditar = null;
-        for (Integrante integrante : store.getIntegrantes()) {
-            if (integrante instanceof Respetable && integrante.getId().equals(id)) {
-                respetableAEditar = (Respetable) integrante;
-                break;
-            }
-        }*/
-        
-
         if (respetableAEditar != null) {
             // Actualizar los campos del Respetable existente
             respetableAEditar.setNombre(respetableActualizado.getNombre());
@@ -111,20 +91,10 @@ public class mafiosoController {
         // Aquí manejarías la actualización del Respetable
         Criminal criminalAEditar = (Criminal) store.getIntegrantes()
         	    .stream()
-        	    .filter(i -> i instanceof Criminal && i.getId().equals(id))
+        	    .filter(i -> i.getTipo().equals(Tipo.CRIMINAL) && i.getId().equals(id))
         	    .findFirst()
         	    .orElse(null);
-        
-        
-       /* Criminal criminalAEditar = null;
-        // Buscar el Respetable por su ID
-        for (Integrante integrante : store.getIntegrantes()) {
-            if (integrante instanceof Respetable && integrante.getId().equals(id)) {
-                criminalAEditar = (Criminal) integrante;
-                break;
-            }
-        }*/
-        
+
         if (criminalAEditar != null) {
             // Actualizar los campos del Respetable existente
         	criminalAEditar.setNombre(criminalActualizado.getNombre());
@@ -132,42 +102,37 @@ public class mafiosoController {
             // Resto del código para actualizar campos específicos de Respetable
 
             return ResponseEntity.ok("Criminal actualizado con éxito");
-        } else {
+        }else {
             return ResponseEntity.notFound().build();
         }
     }
 	@GetMapping("/integranteRespetable/{id}")
 	public ResponseEntity<Integrante> obtenerIntegranteRespetablePorId(@PathVariable Integer id) {
-		MafiosoStore store = MafiosoStore.getInstance();
-		Integrante respetableAEditar = null;
-		// Lógica para obtener los detalles del integrante respetable por ID
-		 for (Integrante integrante : store.getIntegrantes()) {
-	            if (integrante instanceof Respetable && integrante.getId().equals(id)) {
-	                respetableAEditar = (Respetable) integrante;
-	                break;
-	            }
-	        }
-	    if (respetableAEditar != null) {
-	        return ResponseEntity.ok(respetableAEditar);
-	    } else {
+		MafiosoStore store = MafiosoStore.getInstance();		
+		Respetable respetableABuscar = (Respetable) store.getIntegrantes()
+        	    .stream()
+        	    .filter(i -> i.getTipo().equals(Tipo.RESPETABLE) && i.getId().equals(id))
+        	    .findFirst()
+        	    .orElse(null);
+		
+	    if (respetableABuscar != null) {
+	        return ResponseEntity.ok(respetableABuscar);
+	    }else {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
 	@GetMapping("/integranteCriminal/{id}")
 	public ResponseEntity<Integrante> obtenerIntegranteCRiminalPorId(@PathVariable Integer id) {
 		MafiosoStore store = MafiosoStore.getInstance();
-		Integrante respetableAEditar = null;
-		// Lógica para obtener los detalles del integrante respetable por ID
-		 for (Integrante integrante : store.getIntegrantes()) {
-	            if (integrante instanceof Criminal && integrante.getId().equals(id)) {
-	                respetableAEditar = (Criminal) integrante;
-	                break;
-	            }
-	        }
-	    if (respetableAEditar != null) {
-	        return ResponseEntity.ok(respetableAEditar);
-	    } else {
-	        return ResponseEntity.notFound().build();
-	    }
+		Criminal criminalABuscar = (Criminal) store.getIntegrantes()
+        	    .stream()
+        	    .filter(i -> i.getTipo().equals(Tipo.CRIMINAL) && i.getId().equals(id))
+        	    .findFirst()
+        	    .orElse(null);
+		if (criminalABuscar != null) {
+			return ResponseEntity.ok(criminalABuscar);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }
