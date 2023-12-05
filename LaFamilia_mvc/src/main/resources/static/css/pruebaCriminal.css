@@ -6,7 +6,7 @@
 
 body {
     background-color: rgb(61, 56, 56);
-    font-family: 'Share Tech', sans-serif;
+    /*font-family: 'Share Tech', sans-serif;*/
     color: #ffffff; /* Cambia el color del texto a blanco */
 }
 
@@ -46,6 +46,7 @@ form input[type="number"] {
     color: #000000; /* Cambia el color del texto a negro */
 }
 
+
 form select {
     width: 100%;
     padding: 10px;
@@ -57,7 +58,7 @@ form select {
 }
 
 form button {
-    width: 200px; /* Ancho del botón */
+    width: 100px; /* Ancho del botón */
     padding: 10px;
     margin-top: 16px;
     border: 1px solid #000000; /* Borde del botón */
@@ -68,9 +69,11 @@ form button {
 }
 
 form button:hover {
-    background-color: #000000;
-    color: #ffffff;
+    background-color: white;
+    color: #000000;
 }
+
+
 
 .button-container {
     text-align: center;
@@ -98,10 +101,27 @@ ul li button {
     border: 1px solid black;
     border-radius: 3px;
     background-color: #000000;
-    color: #ffffff; /* Cambia el color del texto a blanco */
+    color: white; /* Cambia el color del texto a blanco */
     cursor: pointer;
 }
 
 ul li button:hover {
     background-color: antiquewhite
 }
+
+#crearIntegranteButton {
+    width: 200px;
+    padding: 10px;
+    margin-top: 16px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+#crearIntegranteButton:hover {
+    background-color: white;
+    color: #000000;
+}
+

@@ -64,7 +64,7 @@ form select {
     color: #000000;
 }
 
-/* Estilos para el botón "Crear Integrante Respetable" */
+/* Estilos para el botón "Editar Integrante Respetable" */
 form input.crear {
     width: 200px;
     padding: 10px;
@@ -76,7 +76,7 @@ form input.crear {
     cursor: pointer;
 }
 
-/* Estilos para el botón "Crear Integrante Respetable" cuando el mouse está sobre él */
+/* Estilos para el botón "Editar Integrante Respetable" cuando el mouse está sobre él */
 form input.crear:hover {
     background-color: white;
     color: #000000;
