@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="css/pruebaCriminal.css">
     <meta charset="UTF-8">
@@ -105,7 +105,7 @@
             axios.post("http://localhost:8080/LaFamilia/AgregarIntegranteCriminal", integrante)
                 .then(function (response) {
                     console.log(response);
-                    console.log("Se logró agregar el integrante criminal");
+                    console.log("Se logro agregar el integrante criminal");
                     window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
                 })
                 .catch(function (error) {

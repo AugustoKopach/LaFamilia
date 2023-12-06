@@ -72,12 +72,11 @@ header p{
     right: 2%;
 }
 a:link {
-    text-decoration: none; /* Quita el subrayado */
-    color: inherit; /* Hereda el color del texto del elemento padre */
+    text-decoration: none; 
+    color: inherit; 
 }
 
-/* Estilo para los enlaces visitados */
 a:visited {
-    text-decoration: none; /* Quita el subrayado */
-    color: inherit; /* Hereda el color del texto del elemento padre */
+    text-decoration: none; 
+    color: inherit; 
 }

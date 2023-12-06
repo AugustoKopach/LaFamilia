@@ -41,7 +41,7 @@ form label {
     color: #000000;
 }
 
-/* Estilos para los campos de entrada de texto y números del formulario */
+/* Estilos para los campos de entrada de texto y numeros del formulario */
 form input[type="text"],
 form input[type="number"] {
     width: 100%;
@@ -64,7 +64,7 @@ form select {
     color: #000000;
 }
 
-/* Estilos para el botón "Crear Integrante Respetable" */
+/* Estilos para el boton "Crear Integrante Respetable" */
 form input.editar {
     width: 200px;
     padding: 10px;
@@ -76,13 +76,13 @@ form input.editar {
     cursor: pointer;
 }
 
-/* Estilos para el botón "Crear Integrante Respetable" cuando el mouse está sobre él */
+/* Estilos para el boton "Crear Integrante Respetable" cuando el mouse está sobre el */
 form input.editar:hover {
     background-color: white;
     color: #000000;
 }
 
-/* Estilos para el botón "Agregar Título" */
+/* Estilos para el boton "Agregar Titulo" */
 form button {
     width: 100px; /* Ancho del botón reducido a 100px */
     padding: 5px 10px; /* Relleno interno de 5px en vertical y 10px en horizontal (reducido) */
@@ -94,7 +94,7 @@ form button {
     cursor: pointer;
 }
 
-/* Estilos para el botón "Agregar Título" cuando el mouse está sobre él */
+/* Estilos para el boton "Agregar Titulo" cuando el mouse esta sobre el */
 form button:hover {
     background-color: white;
     color: #000000;
@@ -128,7 +128,7 @@ ul li button {
     cursor: pointer;
 }
 
-/* Estilos para el botón dentro de los elementos de la lista (li) cuando el mouse está sobre él */
+/* Estilos para el boton dentro de los elementos de la lista (li) cuando el mouse está sobre el */
 ul li button:hover {
     background-color: antiquewhite;
 }

@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Estilos para el cuerpo (body) de la página */
+/* Estilos para el cuerpo (body) de la pagina */
 body {
     background-color: rgb(61, 56, 56);
     font-family: 'Share Tech', sans-serif;
@@ -41,7 +41,7 @@ form label {
     color: #000000;
 }
 
-/* Estilos para los campos de entrada de texto y números del formulario */
+/* Estilos para los campos de entrada de texto y numeros del formulario */
 form input[type="text"],
 form input[type="number"] {
     width: 100%;
@@ -53,7 +53,7 @@ form input[type="number"] {
     color: #000000;
 }
 
-/* Estilos para los select (menús desplegables) del formulario */
+/* Estilos para los select (menus desplegables) del formulario */
 form select {
     width: 100%;
     padding: 10px;
@@ -64,7 +64,7 @@ form select {
     color: #000000;
 }
 
-/* Estilos para el botón "Editar Integrante Respetable" */
+/* Estilos para el boton "Editar Integrante Respetable" */
 form input.editar {
     width: 200px;
     padding: 10px;
@@ -76,7 +76,7 @@ form input.editar {
     cursor: pointer;
 }
 
-/* Estilos para el botón "Editar Integrante Respetable" cuando el mouse está sobre él */
+/* Estilos para el boton "Editar Integrante Respetable" cuando el mouse esta sobre el */
 form input.editar:hover {
     background-color: white;
     color: #000000;

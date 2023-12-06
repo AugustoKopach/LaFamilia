@@ -24,7 +24,7 @@ import TP.LaFamilia_mvc.store.MafiosoStore;
 @RestController
 @RequestMapping()
 public class mafiosoController {
-
+	
 	
 	
 	@GetMapping("/Integrantes")
@@ -54,7 +54,7 @@ public class mafiosoController {
 
 	    if (integranteAEliminar != null) {
 	        store.eliminarIntegrante(integranteAEliminar);
-	        return "Integrante eliminado con éxito";
+	        return "Integrante eliminado con exito";
 	    } else {
 	        return "Integrante no encontrado";
 	    }
@@ -65,7 +65,6 @@ public class mafiosoController {
     public ResponseEntity<String> actualizarRespetable(@PathVariable Integer id, @RequestBody Respetable respetableActualizado) {
         MafiosoStore store = MafiosoStore.getInstance();
         
-        // Buscar el Respetable por su ID
         Respetable respetableAEditar = (Respetable) store.getIntegrantes()
         	    .stream()
         	    .filter(i -> i.getTipo().equals(Tipo.RESPETABLE) && i.getId().equals(id))
@@ -73,12 +72,10 @@ public class mafiosoController {
         	    .orElse(null);
         
         if (respetableAEditar != null) {
-            // Actualizar los campos del Respetable existente
             respetableAEditar.setNombre(respetableActualizado.getNombre());
             respetableAEditar.setPuntosDeHonor(respetableActualizado.getPuntosDeHonor());
-            // Resto del código para actualizar campos específicos de Respetable
 
-            return ResponseEntity.ok("Respetable actualizado con éxito");
+            return ResponseEntity.ok("Respetable actualizado con exito");
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -86,9 +83,7 @@ public class mafiosoController {
 	@PutMapping("/EditarCriminal/{id}")
     public ResponseEntity<String> actualizarCriminal(@PathVariable Integer id, @RequestBody Criminal criminalActualizado) {
         MafiosoStore store = MafiosoStore.getInstance();
-        // Resto del código...
-
-        // Aquí manejarías la actualización del Respetable
+        
         Criminal criminalAEditar = (Criminal) store.getIntegrantes()
         	    .stream()
         	    .filter(i -> i.getTipo().equals(Tipo.CRIMINAL) && i.getId().equals(id))
@@ -96,12 +91,11 @@ public class mafiosoController {
         	    .orElse(null);
 
         if (criminalAEditar != null) {
-            // Actualizar los campos del Respetable existente
+        	
         	criminalAEditar.setNombre(criminalActualizado.getNombre());
         	criminalAEditar.setPuntosDeHonor(criminalActualizado.getPuntosDeHonor());
-            // Resto del código para actualizar campos específicos de Respetable
 
-            return ResponseEntity.ok("Criminal actualizado con éxito");
+            return ResponseEntity.ok("Criminal actualizado con exito");
         }else {
             return ResponseEntity.notFound().build();
         }

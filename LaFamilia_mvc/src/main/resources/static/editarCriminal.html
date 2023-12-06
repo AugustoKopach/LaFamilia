@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="css/estiloEditCriminal.css">
     <meta charset="UTF-8">
@@ -22,14 +22,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        // Obtener ID_DEL_INTEGRANTE de la URL
+        
         const urlParams = new URLSearchParams(window.location.search);
-        const integranteId = urlParams.get('id'); // O el método que utilices para obtener el ID del integrante
+        const integranteId = urlParams.get('id'); 
 
         axios.get(`http://localhost:8080/LaFamilia/integranteCriminal/${integranteId}`)
             .then(function (response) {
-                const integrante = response.data; // Datos del integrante obtenidos de la API
-                // Llenar los campos del formulario con los datos del integrante
+                const integrante = response.data; 
                 document.getElementById("nombre").value = integrante.nombre;
                 document.getElementById("puntosDeHonor").value = integrante.puntosDeHonor;
             })
@@ -54,7 +53,7 @@
             axios.put(`http://localhost:8080/LaFamilia/EditarCriminal/${integranteId}`, integrante)
                 .then(function (response) {
                     console.log(response);
-                    console.log("Integrante respetable editado con éxito");
+                    console.log("Integrante respetable editado con exito");
                     window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
                 })
                 .catch(function (error) {

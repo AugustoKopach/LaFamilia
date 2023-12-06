@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Estilos para el cuerpo (body) de la página */
+/* Estilos para el cuerpo (body) de la pagina */
 body {
     background-color: rgb(61, 56, 56);
     font-family: 'Share Tech', sans-serif;
@@ -64,7 +64,7 @@ form select {
     color: #000000;
 }
 
-/* Estilos para el botón "Editar Integrante Respetable" */
+/* Estilos para el boton "Editar Integrante Respetable" */
 form input.crear {
     width: 200px;
     padding: 10px;
@@ -76,15 +76,15 @@ form input.crear {
     cursor: pointer;
 }
 
-/* Estilos para el botón "Editar Integrante Respetable" cuando el mouse está sobre él */
+/* Estilos para el botón "Editar Integrante Respetable" cuando el mouse esta sobre el */
 form input.crear:hover {
     background-color: white;
     color: #000000;
 }
 
-/* Estilos para el botón "Agregar Título" */
+/* Estilos para el boton "Agregar Titulo" */
 form button {
-    width: 100px; /* Ancho del botón reducido a 100px */
+    width: 100px; /* Ancho del boton reducido a 100px */
     padding: 5px 10px; /* Relleno interno de 5px en vertical y 10px en horizontal (reducido) */
     margin-top: 16px;
     border: 1px solid #000000;
@@ -94,7 +94,7 @@ form button {
     cursor: pointer;
 }
 
-/* Estilos para el botón "Agregar Título" cuando el mouse está sobre él */
+/* Estilos para el boton "Agregar Titulo" cuando el mouse esta sobre el */
 form button:hover {
     background-color: white;
     color: #000000;
@@ -128,7 +128,7 @@ ul li button {
     cursor: pointer;
 }
 
-/* Estilos para el botón dentro de los elementos de la lista (li) cuando el mouse está sobre él */
+/* Estilos para el boton dentro de los elementos de la lista (li) cuando el mouse está sobre el */
 ul li button:hover {
     background-color: antiquewhite;
 }

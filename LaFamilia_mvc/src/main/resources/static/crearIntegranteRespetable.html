@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="stylesheet" href="css/estiloRespetable.css">
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 
         <div id="titulosContainer">
             <label for="titulo">Título:</label>
-            <input type="text" id="titulo" placeholder="Título">
+            <input type="text" id="titulo" placeholder="Titulo">
             <button type="button" onclick="agregarTitulo()">Agregar Título</button>
         </div>
         <br>
@@ -48,7 +48,7 @@
                 actualizarListaDeTitulos();
                 reiniciarFormularioTitulos();
             } else {
-                alert("Por favor, ingresa un título válido.");
+                alert("Por favor, ingresa un titulo valido.");
             }
         }
 
@@ -74,7 +74,7 @@
             const tieneCargoPolitico = document.getElementById("cargoPolitico").checked;
             
 
-            // Ahora agregamos los títulos al objeto integrante
+            // Agregamos los titulos al integrante
             const integrante = {
                 nombre,
                 puntosDeHonor,
@@ -84,12 +84,10 @@
                 tipo : "RESPETABLE"
             };
 
-            // Puedes realizar cualquier otra acción que necesites con el objeto 'integrante'.
-            // Por ejemplo, puedes enviarlo al servidor utilizando axios si es necesario.
             axios.post("http://localhost:8080/LaFamilia/AgregarIntegranteRespetable", integrante)
                 .then(function (response) {
                     console.log(response);
-                    console.log("Se logró agregar el integrante respetable");
+                    console.log("Se logro agregar el integrante respetable");
                     window.location.href = "http://localhost:8080/LaFamilia/integrantes.html";
                 })
                 .catch(function (error) {
@@ -100,7 +98,7 @@
                     }
                 });
             });
-            // Luego, puedes reiniciar los campos y la lista de títulos.
+            
             reiniciarFormularioTitulos();
        
     </script>

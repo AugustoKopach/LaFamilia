@@ -49,21 +49,19 @@
             axios.delete(`/LaFamilia/Borrar/Integrante/${id}`)
                 .then(response => {
                     console.log(response);
-                    console.log("Se logró eliminar el integrante respetable");
-                    window.location.reload(); // Recargar la página después de la eliminación
+                    console.log("Se logro eliminar el integrante respetable");
+                    window.location.reload(); 
                 })
                 .catch(error => {
                     console.error("Error al eliminar el integrante:", error);
-                    alert("Error al eliminar el integrante. Por favor, inténtalo de nuevo.");
+                    alert("Error al eliminar el integrante. Por favor, intentalo de nuevo.");
                 });
         }
 
         function editarFila(id, tipo) {
             if (tipo === 'RESPETABLE') {
-                // Redirigir a la página de edición de respetables
                 window.location.href = `/LaFamilia/editarIntegrante.html?id=${id}`;
             } else if (tipo === 'CRIMINAL') {
-                // Redirigir a la página de edición de criminales
                 window.location.href = `/LaFamilia/editarCriminal.html?id=${id}`;
             } else {
                 console.error("Tipo de integrante no reconocido:", tipo);
@@ -82,7 +80,7 @@
                 })
                 .catch(error => {
                     console.error("Error al obtener la lista de integrantes:", error);
-                    alert("Error al obtener la lista de integrantes. Por favor, inténtalo de nuevo.");
+                    alert("Error al obtener la lista de integrantes. Por favor, intentalo de nuevo.");
                 });
         }
 
